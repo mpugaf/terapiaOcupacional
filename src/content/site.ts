@@ -11,26 +11,26 @@ export const siteContent: SiteContent = {
   metadata: {
     title: '[NOMBRE_EMPRESA] | Terapia Ocupacional especializada en Parkinson',
     description:
-      'Terapia Ocupacional profesional para personas con Parkinson y sus familias en [CIUDAD]. Recuperá autonomía e independencia con [NOMBRE_TERAPEUTA].',
+      'Terapia Ocupacional profesional para personas con Parkinson y sus familias en [CIUDAD]. Recupera autonomía e independencia con [NOMBRE_TERAPEUTA].',
     url: 'https://[TU_DOMINIO]', // reemplazar con dominio definitivo antes de publicar
-    locale: 'es-AR',
+    locale: 'es-CL',
     businessName: '[NOMBRE_EMPRESA]',
     therapistName: 'Lic. [NOMBRE_TERAPEUTA]',
-    phone: '+56 9 [CODIGO_AREA] [NUMERO]',
+    phone: '+56 9 [NUMERO]', // Chile: móviles son +56 9 XXXX XXXX (sin código de área)
     email: '[EMAIL]@gmail.com',
     address: {
       street: '[CALLE] [NUMERO]',
       city: '[CIUDAD]',
-      region: '[PROVINCIA]',
-      country: 'Argentina',
+      region: '[REGIÓN]', // ej: Región Metropolitana, Región de Valparaíso
+      country: 'Chile',
       postalCode: '[CODIGO_POSTAL]',
     },
     coordinates: {
-      lat: -34.603722, // placeholder: Plaza de Mayo, Buenos Aires
-      lng: -58.381592, // reemplazar con coordenadas reales del consultorio
+      lat: -33.4489, // placeholder: Plaza de Armas, Santiago de Chile
+      lng: -70.6693, // reemplazar con coordenadas reales del consultorio
     },
     socialLinks: {
-      whatsapp: '549[NUMERO_WHATSAPP]', // sin espacios ni guiones, con código de país
+      whatsapp: '569[NUMERO_WHATSAPP]', // sin espacios ni guiones, con código de país (+56)
       instagram: 'https://instagram.com/[HANDLE_INSTAGRAM]',
       linkedin: 'https://linkedin.com/in/[PERFIL_LINKEDIN]',
     },
@@ -49,7 +49,7 @@ export const siteContent: SiteContent = {
   ],
 
   hero: {
-    headline: 'Recuperá tu autonomía con apoyo profesional',
+    headline: 'Recupera tu autonomía con apoyo profesional',
     subheadline:
       'Terapia Ocupacional especializada para personas con Parkinson y sus familias. Te acompañamos para mantener la independencia y mejorar la calidad de vida día a día.',
     cta: {
@@ -146,7 +146,7 @@ export const siteContent: SiteContent = {
       },
     ],
     closing:
-      '¿Tenés dudas sobre si la Terapia Ocupacional puede ayudar en tu caso particular?',
+      '¿Tienes dudas sobre si la Terapia Ocupacional puede ayudar en tu caso particular?',
   },
 
   contacto: {
