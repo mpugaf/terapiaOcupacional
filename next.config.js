@@ -7,6 +7,7 @@ const nextConfig = {
   },
   // Trailing slash mejora compatibilidad con hosting estático (Vercel, S3, etc.)
   trailingSlash: true,
+  allowedDevOrigins: ['192.168.100.16'],
 }
 
 module.exports = nextConfig
