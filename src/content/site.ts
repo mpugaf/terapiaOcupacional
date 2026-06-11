@@ -98,7 +98,7 @@ export const siteContent: SiteContent = {
   },
 
   equipo: {
-    heading: 'Quiénes somos',
+    heading: 'Equipo',
     intro:
       'Somos un equipo de profesionales de la salud con experiencia en atención a personas mayores. Nos une la convicción de que el cuidado digno y cercano marca la diferencia.',
     members: [
