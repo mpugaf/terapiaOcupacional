@@ -1,21 +1,9 @@
-// FEATURE FLAG: features.whatsapp
-// Para activar:
-//   1. features.whatsapp = true  en /src/config/features.ts
-//   2. NEXT_PUBLIC_WHATSAPP_NUMBER=5491112345678  en .env.local
-
 'use client'
 
-interface WhatsAppButtonProps {
-  /** Número completo con código de país, sin espacios. Ej: 5491112345678 */
-  phoneNumber: string
-  message?: string
-}
+import { siteContent } from '@/content/site'
 
-export function WhatsAppButton({
-  phoneNumber,
-  message = 'Hola, me gustaría consultar sobre Terapia Ocupacional.',
-}: WhatsAppButtonProps) {
-  const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+export function WhatsAppButton() {
+  const href = `https://wa.me/${siteContent.metadata.whatsappNumber}`
 
   return (
     <a

@@ -5,6 +5,7 @@ import { QueHacemos } from '@/components/sections/QueHacemos'
 import { ComoTrabajamos } from '@/components/sections/ComoTrabajamos'
 import { Equipo } from '@/components/sections/Equipo'
 import { Contacto } from '@/components/sections/Contacto'
+import { WhatsAppButton } from '@/components/features/WhatsAppButton'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Contacto />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   )
 }
