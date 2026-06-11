@@ -1,105 +1,108 @@
-import { type ReactNode } from 'react'
+'use client'
+
+import { type FormEvent, useState } from 'react'
 import { siteContent } from '@/content/site'
-import { SectionWrapper } from '@/components/ui/SectionWrapper'
-import { features } from '@/config/features'
-import { ContactForm } from '@/components/features/ContactForm'
-import { MapEmbed } from '@/components/features/MapEmbed'
 
 export function Contacto() {
-  const { heading, subheading, schedule } = siteContent.contacto
-  const { phone, email, address, coordinates } = siteContent.metadata
+  const { contacto, metadata } = siteContent
+  const [nombre, setNombre] = useState('')
+  const [telefono, setTelefono] = useState('')
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const msg = encodeURIComponent(
+      `Hola, soy ${nombre}. Mi WhatsApp es ${telefono}.`
+    )
+    window.open(`https://wa.me/${metadata.whatsappNumber}?text=${msg}`, '_blank')
+  }
+
+  const inputBase =
+    'w-full border-b border-[--color-accent-lt] bg-transparent py-3 font-body text-base outline-none transition-colors duration-150 focus:border-[--color-accent]'
 
   return (
-    <SectionWrapper id="contacto" className="bg-white">
-      <div className="mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold text-slate-900 sm:text-4xl">{heading}</h2>
-        <p className="mx-auto max-w-2xl text-lg text-slate-600">{subheading}</p>
-      </div>
-
-      <div className="grid gap-10 lg:grid-cols-2">
-        {/* Columna izquierda: datos de contacto */}
-        <div className="space-y-5">
-          <ContactCard icon="📞" label="Teléfono">
-            <a
-              href={`tel:${phone.replace(/\s/g, '')}`}
-              className="text-emerald-700 hover:underline focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            >
-              {phone}
-            </a>
-          </ContactCard>
-
-          <ContactCard icon="✉️" label="Email">
-            <a
-              href={`mailto:${email}`}
-              className="break-all text-emerald-700 hover:underline focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            >
-              {email}
-            </a>
-          </ContactCard>
-
-          <ContactCard icon="📍" label="Dirección">
-            <address className="not-italic text-slate-700">
-              {address.street}, {address.city}
-              <br />
-              {address.region}, {address.country}
-            </address>
-          </ContactCard>
-
-          <ContactCard icon="🕐" label="Horario">
-            <p className="text-slate-700">{schedule}</p>
-          </ContactCard>
-
-          {/* Placeholder visible mientras features.contactForm = false */}
-          {!features.contactForm && (
-            <div className="rounded-xl border-2 border-dashed border-slate-200 p-5 text-center">
-              <p className="text-sm text-slate-500">
-                <span className="block font-medium text-slate-600">Formulario de contacto</span>
-                Próximamente —{' '}
-                <code className="rounded bg-slate-100 px-1 text-xs">features.contactForm</code>
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Columna derecha: formulario y/o mapa */}
-        <div className="space-y-6">
-          {features.contactForm && <ContactForm />}
-
-          {features.map ? (
-            <MapEmbed lat={coordinates.lat} lng={coordinates.lng} />
-          ) : (
-            <div className="flex h-48 items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50">
-              <p className="text-center text-sm text-slate-500">
-                <span className="block font-medium text-slate-600">Mapa de ubicación</span>
-                Próximamente —{' '}
-                <code className="rounded bg-slate-100 px-1 text-xs">features.map</code>
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-    </SectionWrapper>
-  )
-}
-
-interface ContactCardProps {
-  icon: string
-  label: string
-  children: ReactNode
-}
-
-function ContactCard({ icon, label, children }: ContactCardProps) {
-  return (
-    <div className="flex items-start gap-4 rounded-xl bg-slate-50 p-5">
-      <span className="shrink-0 text-2xl" aria-hidden="true">
-        {icon}
-      </span>
-      <div>
-        <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">
-          {label}
+    <section
+      id="contacto"
+      className="scroll-mt-16 py-14 md:py-20"
+      style={{ backgroundColor: 'var(--color-bg)' }}
+    >
+      <div className="mx-auto max-w-content px-5 sm:px-6">
+        <h2
+          className="mb-3 font-serif text-3xl font-bold md:text-4xl"
+          style={{ color: 'var(--color-text)' }}
+        >
+          {contacto.heading}
+        </h2>
+        <p
+          className="mb-10 font-body text-lg"
+          style={{ color: 'var(--color-text-muted)' }}
+        >
+          {contacto.subheading}
         </p>
-        {children}
+
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-md space-y-8"
+          noValidate
+          aria-label="Formulario de contacto"
+        >
+          <div>
+            <label
+              htmlFor="contact-name"
+              className="mb-2 block font-body text-sm font-semibold"
+              style={{ color: 'var(--color-text-muted)' }}
+            >
+              Nombre completo
+            </label>
+            <input
+              id="contact-name"
+              type="text"
+              required
+              autoComplete="name"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              placeholder="Tu nombre"
+              className={inputBase}
+              style={{ color: 'var(--color-text)' }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="contact-phone"
+              className="mb-2 block font-body text-sm font-semibold"
+              style={{ color: 'var(--color-text-muted)' }}
+            >
+              Número de WhatsApp
+            </label>
+            <input
+              id="contact-phone"
+              type="tel"
+              required
+              autoComplete="tel"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              placeholder="+56 9 XXXX XXXX"
+              className={inputBase}
+              style={{ color: 'var(--color-text)' }}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="min-h-[48px] rounded-lg px-8 py-3 font-body text-base font-semibold transition-opacity duration-150 hover:opacity-90"
+            style={{ backgroundColor: 'var(--color-accent)', color: 'var(--color-white)' }}
+          >
+            Enviar por WhatsApp
+          </button>
+        </form>
+
+        <p
+          className="mt-8 max-w-md font-body text-sm leading-relaxed"
+          style={{ color: 'var(--color-text-muted)' }}
+        >
+          {contacto.supportText}
+        </p>
       </div>
-    </div>
+    </section>
   )
 }

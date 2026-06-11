@@ -1,66 +1,54 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Playfair_Display, Source_Serif_4 } from 'next/font/google'
 import './globals.css'
-import { siteContent } from '@/content/site'
 import { JsonLd } from '@/components/ui/JsonLd'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
-  weight: ['400', '600', '700'],
+  weight: ['400', '700'],
 })
 
-const dmSans = DM_Sans({
+const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-source-serif',
   display: 'swap',
-  weight: ['400', '500', '600'],
+  weight: ['400', '600'],
 })
-
-const { metadata: meta } = siteContent
 
 export const metadata: Metadata = {
-  title: {
-    default: meta.title,
-    template: `%s | ${meta.businessName}`,
-  },
-  description: meta.description,
-  metadataBase: new URL(meta.url.replace('[TU_DOMINIO]', 'localhost:3000')),
+  title: 'Sinapsis60 — Atención en consulta y domiciliaria para personas mayores',
+  description:
+    'Sinapsis60 ofrece atención profesional en consulta y domiciliaria para adultos mayores en Santiago. Profesionales de salud con trato cercano y personalizado.',
+  keywords: 'atención domiciliaria personas mayores Santiago, cuidado adulto mayor, Sinapsis60',
+  metadataBase: new URL('https://sinapsis.cl'),
   openGraph: {
-    title: meta.title,
-    description: meta.description,
-    url: meta.url,
-    siteName: meta.businessName,
-    locale: meta.locale,
+    title: 'Sinapsis60',
+    description: 'Atención especializada para personas mayores en Santiago.',
+    url: 'https://sinapsis.cl',
+    siteName: 'Sinapsis60',
+    locale: 'es_CL',
     type: 'website',
-    images: [
-      {
-        url: meta.openGraph.image,
-        width: 1200,
-        height: 630,
-        alt: meta.openGraph.imageAlt,
-      },
-    ],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
   },
-  // Listo para i18n: agregar alternates con hreflang cuando se expanda a múltiples idiomas/locales
   alternates: {
-    canonical: '/',
+    canonical: 'https://sinapsis.cl',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-CL" className="scroll-smooth">
+    <html lang="es-CL">
       <head>
         <JsonLd />
       </head>
-      <body className={`${playfair.variable} ${dmSans.variable} font-sans`}>{children}</body>
+      <body className={`${playfair.variable} ${sourceSerif.variable} font-body`}>
+        {children}
+      </body>
     </html>
   )
 }

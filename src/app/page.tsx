@@ -1,31 +1,23 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
-import { Servicios } from '@/components/sections/Servicios'
-import { SobreMi } from '@/components/sections/SobreMi'
-import { Parkinson } from '@/components/sections/Parkinson'
+import { QueHacemos } from '@/components/sections/QueHacemos'
+import { ComoTrabajamos } from '@/components/sections/ComoTrabajamos'
+import { Equipo } from '@/components/sections/Equipo'
 import { Contacto } from '@/components/sections/Contacto'
-import { WhatsAppButton } from '@/components/features/WhatsAppButton'
-import { features } from '@/config/features'
-import { siteContent } from '@/content/site'
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main className="pt-16">
         <Hero />
-        <Servicios />
-        <SobreMi />
-        <Parkinson />
+        <QueHacemos />
+        <ComoTrabajamos />
+        <Equipo />
         <Contacto />
       </main>
       <Footer />
-
-      {/* WhatsApp: solo se renderiza cuando features.whatsapp = true */}
-      {features.whatsapp && siteContent.metadata.socialLinks.whatsapp && (
-        <WhatsAppButton phoneNumber={siteContent.metadata.socialLinks.whatsapp} />
-      )}
     </>
   )
 }

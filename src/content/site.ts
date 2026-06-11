@@ -1,158 +1,139 @@
 // =============================================================================
-// CAPA DE CONTENIDO — única fuente de verdad del sitio
-// Reemplazar todos los valores entre [CORCHETES] con datos reales.
-// En una fase futura, este archivo puede ser reemplazado por un adaptador de CMS
-// (Notion, Sanity) sin modificar ningún componente.
+// CAPA DE CONTENIDO — Sinapsis60
+// Reemplazar los valores TODO con datos reales del cliente (Marcelo Salinas).
 // =============================================================================
 
 import type { SiteContent } from '@/types/content'
 
 export const siteContent: SiteContent = {
   metadata: {
-    title: '[NOMBRE_EMPRESA] | Terapia Ocupacional especializada en Parkinson',
+    title: 'Sinapsis60 — Atención en consulta y domiciliaria para personas mayores',
     description:
-      'Terapia Ocupacional profesional para personas con Parkinson y sus familias en [CIUDAD]. Recupera autonomía e independencia con [NOMBRE_TERAPEUTA].',
-    url: 'https://[TU_DOMINIO]', // reemplazar con dominio definitivo antes de publicar
+      'Sinapsis60 ofrece atención profesional en consulta y domiciliaria para adultos mayores en Santiago. Profesionales de salud con trato cercano y personalizado.',
+    url: 'https://sinapsis.cl',
     locale: 'es-CL',
-    businessName: '[NOMBRE_EMPRESA]',
-    therapistName: 'Lic. [NOMBRE_TERAPEUTA]',
-    phone: '+56 9 [NUMERO]', // Chile: móviles son +56 9 XXXX XXXX (sin código de área)
-    email: '[EMAIL]@gmail.com',
+    businessName: 'Sinapsis60',
+    whatsappNumber: '56972191941',
+    phone: '+56 9 XXXX XXXX',     // TODO: reemplazar con número real
+    email: 'contacto@sinapsis.cl', // TODO: confirmar con cliente
     address: {
-      street: '[CALLE] [NUMERO]',
-      city: '[CIUDAD]',
-      region: '[REGIÓN]', // ej: Región Metropolitana, Región de Valparaíso
+      street: 'TODO: dirección del consultorio',
+      city: 'Santiago',
+      region: 'Región Metropolitana',
       country: 'Chile',
-      postalCode: '[CODIGO_POSTAL]',
     },
     coordinates: {
-      lat: -33.4489, // placeholder: Plaza de Armas, Santiago de Chile
-      lng: -70.6693, // reemplazar con coordenadas reales del consultorio
-    },
-    socialLinks: {
-      whatsapp: '569[NUMERO_WHATSAPP]', // sin espacios ni guiones, con código de país (+56)
-      instagram: 'https://instagram.com/[HANDLE_INSTAGRAM]',
-      linkedin: 'https://linkedin.com/in/[PERFIL_LINKEDIN]',
+      lat: -33.4489, // placeholder: Santiago centro
+      lng: -70.6693,
     },
     openGraph: {
-      image: '/og-image.png', // agregar imagen 1200×630 en /public
-      imageAlt: '[NOMBRE_EMPRESA] — Terapia Ocupacional para Parkinson',
+      title: 'Sinapsis60',
+      description: 'Atención especializada para personas mayores en Santiago.',
     },
   },
 
   nav: [
-    { label: 'Inicio', href: '#inicio' },
-    { label: 'Servicios', href: '#servicios' },
-    { label: 'Sobre mí', href: '#sobre-mi' },
-    { label: 'Parkinson', href: '#parkinson' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Inicio',           href: '#inicio' },
+    { label: 'Lo que hacemos',   href: '#que-hacemos' },
+    { label: 'Cómo trabajamos',  href: '#como-trabajamos' },
+    { label: 'Equipo',           href: '#equipo' },
+    { label: 'Contacto',         href: '#contacto' },
   ],
 
   hero: {
-    headline: 'Recupera tu autonomía con apoyo profesional',
+    headline: 'Cuidado especializado para quienes más quieres',
     subheadline:
-      'Terapia Ocupacional especializada para personas con Parkinson y sus familias. Te acompañamos para mantener la independencia y mejorar la calidad de vida día a día.',
-    cta: {
-      primary: { label: 'Consultar turno', href: '#contacto' },
-      secondary: { label: 'Conocer servicios', href: '#servicios' },
-    },
-    imageAlt: '[NOMBRE_TERAPEUTA] en sesión de Terapia Ocupacional',
+      'Atención en consulta y domiciliaria para personas mayores. Profesionales de salud, trato cercano.',
+    ctaLabel: 'Escríbenos por WhatsApp',
   },
 
-  servicios: {
-    heading: 'Servicios',
-    subheading:
-      'Intervenciones personalizadas enfocadas en las actividades que más importan para cada persona.',
-    items: [
+  queHacemos: {
+    heading: 'Lo que hacemos',
+    cards: [
       {
-        icon: 'key',
-        title: 'Evaluación domiciliaria',
+        icon: 'building',
+        title: 'Atención en consulta',
         description:
-          'Análisis del entorno del hogar para identificar barreras y proponer adaptaciones que favorezcan la seguridad y la autonomía.',
+          'Evaluación y tratamiento en nuestras instalaciones, con equipamiento especializado para adultos mayores.',
       },
       {
-        icon: 'coffee',
-        title: 'Actividades de la vida diaria',
+        icon: 'home',
+        title: 'Atención domiciliaria',
         description:
-          'Entrenamiento en vestido, higiene, alimentación y movilidad para maximizar la independencia funcional.',
-      },
-      {
-        icon: 'pencil',
-        title: 'Rehabilitación motora',
-        description:
-          'Ejercicios específicos para trabajar temblor, rigidez y coordinación, adaptados al estadio de la enfermedad.',
-      },
-      {
-        icon: 'book',
-        title: 'Estimulación cognitiva',
-        description:
-          'Actividades diseñadas para mantener y mejorar memoria, atención y funciones ejecutivas.',
+          'Llevamos el cuidado hasta el hogar del paciente, con la misma calidad y dedicación profesional.',
       },
       {
         icon: 'users',
-        title: 'Educación a cuidadores',
+        title: 'Acompañamiento familiar',
         description:
-          'Orientación y entrenamiento para que el entorno familiar pueda acompañar de manera efectiva y sostenible.',
+          'Orientamos a las familias en el proceso de cuidado, con guías prácticas y apoyo continuo.',
+      },
+    ],
+  },
+
+  comoTrabajamos: {
+    heading: 'Cómo trabajamos',
+    steps: [
+      {
+        title: 'Primer contacto',
+        description:
+          'Nos escribes o llamas. En menos de 24 horas coordinamos una primera evaluación sin costo.',
       },
       {
-        icon: 'clipboard',
-        title: 'Plan personalizado',
+        title: 'Evaluación inicial',
         description:
-          'Evaluación integral y diseño de un plan con objetivos medibles, revisado periódicamente con el paciente y su familia.',
+          'Un profesional evalúa las necesidades del paciente y diseña un plan personalizado.',
+      },
+      {
+        title: 'Atención continua',
+        description:
+          'Iniciamos las sesiones acordadas, en consulta o en domicilio según lo que mejor se adapte.',
+      },
+      {
+        title: 'Seguimiento',
+        description:
+          'Revisamos el progreso periódicamente y ajustamos el plan con la familia.',
       },
     ],
   },
 
-  sobreMi: {
-    heading: 'Sobre mí',
-    bio: [
-      'Soy [NOMBRE_TERAPEUTA], Licenciada en Terapia Ocupacional egresada de [UNIVERSIDAD]. Mi pasión es acompañar a personas con enfermedades neurodegenerativas a seguir haciendo lo que les importa.',
-      'Trabajo con un enfoque centrado en la persona: los objetivos del tratamiento los define el paciente, no solo la enfermedad. Cada sesión está diseñada para ser funcional, significativa y adaptada al momento de vida de quien me consulta.',
-      'Con [N] años de experiencia en neurología y especialmente en Parkinson, combino las últimas evidencias clínicas con una mirada humana y cercana.',
-    ],
-    credentials: [
-      'Licenciatura en Terapia Ocupacional — [UNIVERSIDAD]',
-      'Especialización en Neurología — [INSTITUCIÓN]',
-      '[CURSO O CERTIFICACIÓN RELEVANTE]',
-      'Miembro de [ASOCIACIÓN PROFESIONAL]',
-    ],
-    imageAlt: 'Foto de [NOMBRE_TERAPEUTA], Licenciada en Terapia Ocupacional',
-  },
-
-  parkinson: {
-    heading: 'Terapia Ocupacional y Parkinson',
+  equipo: {
+    heading: 'Quiénes somos',
     intro:
-      'La enfermedad de Parkinson afecta el movimiento, el equilibrio y —con el tiempo— muchas de las actividades cotidianas. La Terapia Ocupacional interviene específicamente en esas actividades, ayudando a la persona a mantener su rol en el hogar, la familia y la comunidad el mayor tiempo posible.',
-    benefits: [
+      'Somos un equipo de profesionales de la salud con experiencia en atención a personas mayores. Nos une la convicción de que el cuidado digno y cercano marca la diferencia.',
+    members: [
+      /* TODO: Reemplazar con datos reales del equipo */
       {
-        title: 'Mantener la independencia',
-        description:
-          'Estrategias y adaptaciones para que el paciente pueda seguir realizando sus actividades preferidas con el menor nivel de asistencia posible.',
+        initials: 'NP',
+        name: 'Nombre del profesional',
+        role: 'Especialidad',
+        description: 'Breve descripción del profesional y su enfoque de trabajo.',
       },
       {
-        title: 'Prevenir caídas',
-        description:
-          'Evaluación de riesgos en el hogar y entrenamiento en técnicas de movimiento seguro para reducir el riesgo de caídas.',
+        initials: 'NP',
+        name: 'Nombre del profesional',
+        role: 'Especialidad',
+        description: 'Breve descripción del profesional y su enfoque de trabajo.',
       },
       {
-        title: 'Adaptar el entorno',
-        description:
-          'Recomendación de ayudas técnicas y modificaciones del hogar (agarraderas, calzado, utensilios) que compensan las limitaciones motoras.',
+        initials: 'NP',
+        name: 'Nombre del profesional',
+        role: 'Especialidad',
+        description: 'Breve descripción del profesional y su enfoque de trabajo.',
       },
       {
-        title: 'Acompañar a la familia',
-        description:
-          'Involucrar a cuidadores y familia en el proceso para que el apoyo sea sostenible, sin descuidar el bienestar de quienes cuidan.',
+        initials: 'NP',
+        name: 'Nombre del profesional',
+        role: 'Especialidad',
+        description: 'Breve descripción del profesional y su enfoque de trabajo.',
       },
     ],
-    closing:
-      '¿Tienes dudas sobre si la Terapia Ocupacional puede ayudar en tu caso particular?',
   },
 
   contacto: {
     heading: 'Contacto',
-    subheading:
-      'Estoy disponible para consultas, turnos y cualquier pregunta. No dudes en comunicarte.',
-    schedule: 'Lunes a viernes de [HORARIO_INICIO] a [HORARIO_FIN] hs.',
+    subheading: '¿Tienes una consulta o quieres coordinar una evaluación?',
+    supportText:
+      'También puedes escribirnos directamente a nuestro WhatsApp. Respondemos en menos de 24 horas.',
   },
 }

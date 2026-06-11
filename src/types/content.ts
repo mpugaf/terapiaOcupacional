@@ -1,14 +1,14 @@
-// Esquema de contenido del sitio.
-// Si se integra un CMS (Notion/Sanity), este archivo define el contrato que debe cumplir el adaptador.
+// Esquema de contenido — Sinapsis60
+// Si se integra un CMS en el futuro, este archivo define el contrato del adaptador.
 
 export interface SiteMetadata {
   title: string
   description: string
   url: string
-  /** Listo para i18n: hoy es un string fijo. Futura expansión: objeto { default, locales } con next-intl */
   locale: string
   businessName: string
-  therapistName: string
+  /** Número de WhatsApp con código de país, sin espacios. Ej: 56912345678 */
+  whatsappNumber: string
   phone: string
   email: string
   address: {
@@ -16,21 +16,9 @@ export interface SiteMetadata {
     city: string
     region: string
     country: string
-    postalCode: string
   }
-  coordinates: {
-    lat: number
-    lng: number
-  }
-  socialLinks: {
-    whatsapp?: string
-    instagram?: string
-    linkedin?: string
-  }
-  openGraph: {
-    image: string
-    imageAlt: string
-  }
+  coordinates: { lat: number; lng: number }
+  openGraph: { title: string; description: string }
 }
 
 export interface NavItem {
@@ -41,56 +29,56 @@ export interface NavItem {
 export interface HeroContent {
   headline: string
   subheadline: string
-  cta: {
-    primary: { label: string; href: string }
-    secondary?: { label: string; href: string }
-  }
-  imageAlt: string
+  ctaLabel: string
 }
 
-export interface ServiceItem {
-  icon: string
+export interface ServiceCard {
+  /** 'building' | 'home' | 'users' — resuelto a SVG inline en el componente */
+  icon: 'building' | 'home' | 'users'
   title: string
   description: string
 }
 
-export interface ServiciosContent {
+export interface QueHacemosContent {
   heading: string
-  subheading: string
-  items: ServiceItem[]
+  cards: ServiceCard[]
 }
 
-export interface SobreMiContent {
-  heading: string
-  bio: string[]
-  credentials: string[]
-  imageAlt: string
-}
-
-export interface ParkinsonBenefit {
+export interface WorkStep {
   title: string
   description: string
 }
 
-export interface ParkinsonContent {
+export interface ComoTrabajamosContent {
+  heading: string
+  steps: WorkStep[]
+}
+
+export interface TeamMember {
+  initials: string
+  name: string
+  role: string
+  description: string
+}
+
+export interface EquipoContent {
   heading: string
   intro: string
-  benefits: ParkinsonBenefit[]
-  closing: string
+  members: TeamMember[]
 }
 
 export interface ContactoContent {
   heading: string
   subheading: string
-  schedule: string
+  supportText: string
 }
 
 export interface SiteContent {
   metadata: SiteMetadata
   nav: NavItem[]
   hero: HeroContent
-  servicios: ServiciosContent
-  sobreMi: SobreMiContent
-  parkinson: ParkinsonContent
+  queHacemos: QueHacemosContent
+  comoTrabajamos: ComoTrabajamosContent
+  equipo: EquipoContent
   contacto: ContactoContent
 }

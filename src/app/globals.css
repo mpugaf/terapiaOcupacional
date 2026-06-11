@@ -2,74 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   Variables de color — Sinapsis60
+   Paleta cálida, profesional y acogedora
+   ========================================================================== */
+:root {
+  --color-bg:         #FAF7F2;
+  --color-surface:    #F0EBE1;
+  --color-accent:     #7A6652;
+  --color-accent-lt:  #B8A898;
+  --color-text:       #2C2420;
+  --color-text-muted: #6B5E55;
+  --color-white:      #FFFFFF;
+}
+
 @layer base {
   html {
-    /* 17px base — legibilidad para usuarios mayores */
-    font-size: 1.0625rem;
+    font-size: 16px; /* mínimo WCAG — público adulto mayor */
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-cream text-ink antialiased leading-relaxed;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    @apply font-body leading-relaxed antialiased;
   }
 
-  /* Focus rings accesibles en todos los elementos interactivos */
+  /* Focus rings accesibles */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-olive-500;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
   }
 
   img {
     @apply max-w-full;
   }
-}
 
-/* ==========================================================================
-   SVG underline animado — Hero
-   Dibujado una sola vez al cargar la página usando stroke-dashoffset
-   ========================================================================== */
-.underline-accent path {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: draw-underline 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
-}
-
-@keyframes draw-underline {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* ==========================================================================
-   Scroll reveal — secciones y elementos con entrada suave
-   ========================================================================== */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Delays escalonados para grupos de elementos */
-.reveal-delay-1 { transition-delay: 100ms; }
-.reveal-delay-2 { transition-delay: 200ms; }
-.reveal-delay-3 { transition-delay: 300ms; }
-.reveal-delay-4 { transition-delay: 400ms; }
-
-/* Respetar preferencia de movimiento reducido en TODO */
-@media (prefers-reduced-motion: reduce) {
-  .underline-accent path {
-    animation: none;
-    stroke-dashoffset: 0;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  /* Área táctil mínima para usuarios mayores (WCAG 2.5.5) */
+  button, a {
+    min-height: 44px;
   }
 }

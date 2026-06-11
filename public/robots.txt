@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-# Reemplazar [TU_DOMINIO] con el dominio real antes de publicar
-Sitemap: https://[TU_DOMINIO]/sitemap.xml
+Sitemap: https://sinapsis.cl/sitemap.xml
